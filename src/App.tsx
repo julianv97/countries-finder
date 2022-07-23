@@ -1,13 +1,8 @@
 import React from 'react';
-import Layout from './components/Layout';
-import Home from './screens/Home';
+import Router from './routes';
 
 const App = () => {
-  return (
-    <Layout>
-      <Home />
-    </Layout>
-  );
+  return <Router />;
 };
 
 export default App;
