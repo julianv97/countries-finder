@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { ArrowBackIcon } from '@chakra-ui/icons';
+import { useLocation } from 'wouter';
 import { getCountry } from '../../api';
 import Button from '../../components/Button';
 import { DetailsParamsType } from '../../schemas';
@@ -13,16 +14,22 @@ const CountryDetail = ({ params }: DetailsParamsType) => {
     isLoading,
     isError,
   } = useQuery(['country'], () => getCountry({ ccn3: params.code }));
+  const location = useLocation();
 
   if (isLoading) return <div>Loading...</div>;
 
   if (isError) return <div>Error!</div>;
 
-  console.log(country);
-
   return (
     <Box>
-      <Button text="Back" width="32" icon={<ArrowBackIcon />} backgroundColor={[white, darkBlue]} />
+      <Button
+        text="Back"
+        width="32"
+        icon={<ArrowBackIcon />}
+        backgroundColor={[white, darkBlue]}
+        boxShadow="sm"
+        onClick={() => location[1]('/')}
+      />
     </Box>
   );
 };

@@ -16,7 +16,7 @@ const Button: React.FC<Props> = ({
   onClick,
   backgroundColor = ['inherit', 'inherit'],
   width = 28,
-  boxShadow = 'sm',
+  boxShadow = 'none',
 }) => {
   return (
     <ButtonChakra
