@@ -1,4 +1,6 @@
 import React from 'react';
+import { Grid, GridItem } from '@chakra-ui/react';
+import CountryCard from '../CountryCard';
 import { CountryType } from '../../schemas';
 
 interface Props {
@@ -7,11 +9,13 @@ interface Props {
 
 const CountriesList: React.FC<Props> = ({ countries = [] }) => {
   return (
-    <div>
+    <Grid templateColumns="repeat(4, 2fr)" columnGap="36" rowGap="16" mt={10}>
       {countries.map((country: CountryType) => (
-        <div key={country.name.common}>{country.name.common}</div>
+        <GridItem key={country.name.common}>
+          <CountryCard country={country} />
+        </GridItem>
       ))}
-    </div>
+    </Grid>
   );
 };
 

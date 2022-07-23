@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <Flex flexDirection="column" justifyContent="space-between" width="90%">
-      <Flex w="100%">
+      <Flex w="100%" mt={10}>
         <Field placeholder="Search for a country..." icon />
         <FilterMenu title="Filter by Region" items={REGIONS} />
       </Flex>
