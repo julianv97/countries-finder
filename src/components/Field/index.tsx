@@ -8,7 +8,7 @@ interface Props {
   width?: string | number;
   icon?: boolean;
   // eslint-disable-next-line no-unused-vars
-  onChange: (e: any) => void;
+  onChange: (value: any, filterBy: string) => void;
 }
 
 const Field: React.FC<Props> = ({ placeholder, width, icon, onChange }) => {
@@ -20,7 +20,7 @@ const Field: React.FC<Props> = ({ placeholder, width, icon, onChange }) => {
         </InputLeftElement>
       )}
       <Input
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value, 'name')}
         type="text"
         placeholder={placeholder}
         _placeholder={{ color: 'gray.500' }}

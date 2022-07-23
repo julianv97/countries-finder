@@ -6,9 +6,11 @@ import { buttonDarkGray, buttonGray } from '../../theme/colors';
 interface Props {
   title: string;
   items: string[];
+  // eslint-disable-next-line no-unused-vars
+  onClickItem: (value: string, filterBy: string) => void;
 }
 
-const FilterMenu: React.FC<Props> = ({ title, items }) => {
+const FilterMenu: React.FC<Props> = ({ title, items, onClickItem }) => {
   return (
     <Menu>
       <MenuButton
@@ -27,7 +29,7 @@ const FilterMenu: React.FC<Props> = ({ title, items }) => {
         {items.map((item) => (
           <MenuItem
             textTransform="capitalize"
-            onClick={() => console.log('filter countries of:', item)}
+            onClick={() => onClickItem(item, 'region')}
             key={useId()}
           >
             {item}

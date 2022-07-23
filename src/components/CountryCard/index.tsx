@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import React, { useId } from 'react';
 import { Box, Heading, Image } from '@chakra-ui/react';
 import ListItem from '../ListItem';
