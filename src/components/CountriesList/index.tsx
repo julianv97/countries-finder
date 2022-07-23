@@ -1,13 +1,14 @@
 import React from 'react';
+import { CountryType } from '../../schemas';
 
 interface Props {
-  countries: any;
+  countries: CountryType[];
 }
 
 const CountriesList: React.FC<Props> = ({ countries = [] }) => {
   return (
     <div>
-      {countries.map((country: any) => (
+      {countries.map((country: CountryType) => (
         <div key={country.name.common}>{country.name.common}</div>
       ))}
     </div>
