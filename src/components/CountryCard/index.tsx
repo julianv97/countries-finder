@@ -11,7 +11,7 @@ interface Props {
 const CountryCard: React.FC<Props> = ({ country }) => {
   const { flags, name, population, region, capital } = country;
   return (
-    <Box boxShadow="base" w="auto" bg={white} borderRadius="md" _dark={{ bg: darkBlue }}>
+    <Box boxShadow="base" w="64" bg={white} borderRadius="md" _dark={{ bg: darkBlue }}>
       <Image
         src={flags.png}
         alt={name?.common}

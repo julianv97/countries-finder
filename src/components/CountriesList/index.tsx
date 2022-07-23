@@ -9,7 +9,7 @@ interface Props {
 
 const CountriesList: React.FC<Props> = ({ countries = [] }) => {
   return (
-    <Grid templateColumns="repeat(4, 1fr)" columnGap="36" rowGap="16" mt={10}>
+    <Grid templateColumns="repeat(4,1fr)" rowGap="16" mt={10}>
       {countries.map((country: CountryType) => (
         <GridItem key={country.name.common}>
           <CountryCard country={country} />
