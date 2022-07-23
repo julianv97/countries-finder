@@ -61,8 +61,8 @@ const CountryDetail = () => {
           mr={20}
           fallbackSrc="https://via.placeholder.com/150"
         />
-        <Box mt={10} w="100%">
-          <Heading>{country?.name}</Heading>
+        <Box w="100%">
+          <Heading my={10}>{country?.name}</Heading>
           <Grid
             templateColumns={[
               'repeat(1, 1fr)',
