@@ -22,6 +22,7 @@ const FilterMenu: React.FC<Props> = ({ title, items, onClickItem }) => {
         }}
         w="64"
         boxShadow="sm"
+        mt={[10, 10, 0]}
       >
         {title}
       </MenuButton>
