@@ -8,7 +8,7 @@ const Router = () => {
   return (
     <Layout>
       <Route path="/" component={Home} />
-      <Route path="/detail/:code" component={CountryDetail} />
+      <Route path="/details/:code" component={CountryDetail} />
     </Layout>
   );
 };

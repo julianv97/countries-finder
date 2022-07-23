@@ -26,6 +26,15 @@ export const CountrySchema = z.object({
     png: z.string(),
   }),
   topLevelDomain: z.array(z.string()),
+  ccn3: z.string(),
 });
+
+export const DetailsParamsSchema = z.object({
+  params: z.object({
+    code: z.string(),
+  }),
+});
+
+export type DetailsParamsType = z.infer<typeof DetailsParamsSchema>;
 
 export type CountryType = z.infer<typeof CountrySchema>;

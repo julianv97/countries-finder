@@ -6,7 +6,7 @@ export const getCountries = async (): Promise<CountryType[]> => {
   return response.data;
 };
 
-export const getCountry = async (name: string) => {
-  const response = await axios.get(`https://restcountries.com/v3.1/alpha/${name}`);
-  return response.data;
+export const getCountry = async ({ ccn3 }: { ccn3: string }): Promise<CountryType> => {
+  const response = await axios.get(`https://restcountries.com/v3.1/alpha/${ccn3}`);
+  return response.data[0];
 };
