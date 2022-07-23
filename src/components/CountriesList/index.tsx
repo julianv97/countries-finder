@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import CountryCard from '../CountryCard';
 import { CountryType } from '../../schemas';
 
@@ -9,13 +9,18 @@ interface Props {
 
 const CountriesList: React.FC<Props> = ({ countries = [] }) => {
   return (
-    <Grid templateColumns="repeat(4,1fr)" rowGap="16" mt={10}>
+    <Flex
+      justifyContent={['center', 'center', 'space-between']}
+      flexWrap="wrap"
+      w="100%"
+      columnGap={5}
+      rowGap={10}
+      mt="10"
+    >
       {countries.map((country: CountryType) => (
-        <GridItem key={country.name.common}>
-          <CountryCard country={country} />
-        </GridItem>
+        <CountryCard country={country} />
       ))}
-    </Grid>
+    </Flex>
   );
 };
 
