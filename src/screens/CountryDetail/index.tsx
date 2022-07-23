@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Image, Heading, Grid } from '@chakra-ui/react';
+import { Box, Flex, Image, Heading, Grid, Spinner } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ const CountryDetail = () => {
 
   if (isError) return <div>Error!</div>;
 
-  if (isFetching) return <div>Loading...</div>;
+  if (isFetching) return <Spinner size="xl" mt={20} />;
 
   const LIST_ITEMS = [
     { title: 'Native Name', text: country?.population.toLocaleString() },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import Field from '../../components/Field';
 import FilterMenu from '../../components/FilterMenu';
@@ -13,8 +13,6 @@ const Home = () => {
   const { data: countries, isLoading, isError } = useQuery(['countries'], getCountries);
   const { handleFilter, filteredItems } = useFilter(countries as CountryType[]);
 
-  if (isLoading) return <div>Loading...</div>;
-
   if (isError) return <div>Error!</div>;
 
   return (
@@ -23,7 +21,11 @@ const Home = () => {
         <Field placeholder="Search for a country..." icon onChange={handleFilter} />
         <FilterMenu title="Filter by Region" items={REGIONS} onClickItem={handleFilter} />
       </Flex>
-      <CountriesList countries={filteredItems} />
+      {isLoading ? (
+        <Spinner size="xl" alignSelf="center" mt={10} />
+      ) : (
+        <CountriesList countries={filteredItems} />
+      )}
     </Flex>
   );
 };

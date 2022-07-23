@@ -10,6 +10,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details/:alpha3Code" element={<CountryDetail />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </Layout>
   );
