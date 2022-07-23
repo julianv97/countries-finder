@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Heading, Image } from '@chakra-ui/react';
+import ListItem from '../ListItem';
 import { CountryType } from '../../schemas';
 import { white, darkBlue } from '../../theme/colors';
 
@@ -23,9 +24,13 @@ const CountryCard: React.FC<Props> = ({ country }) => {
         <Heading as="h4" size="md" mb={3}>
           {name?.common}
         </Heading>
-        <Text>Population: {population}</Text>
-        <Text>Region: {region} </Text>
-        <Text>Capital: {capital} </Text>
+        {[
+          { title: 'Population', text: population.toLocaleString() },
+          { title: 'Region', text: region },
+          { title: 'Capital', text: capital },
+        ].map((item) => (
+          <ListItem key={item.text} title={item.title} text={item.text} />
+        ))}
       </Box>
     </Box>
   );
