@@ -1,11 +1,13 @@
 import React from 'react';
-import { Box, Flex, Heading } from '@chakra-ui/react';
-import { white } from '../../theme/colors';
+import { Flex, Heading } from '@chakra-ui/react';
+import { darkBlue, white } from '../../theme/colors';
+import ThemeSwitch from '../ThemeSwitch';
 
 const Header = () => {
   return (
     <Flex
       bg={white}
+      _dark={{ bg: darkBlue }}
       justifyContent="space-between"
       alignItems="center"
       w="100%"
@@ -14,7 +16,7 @@ const Header = () => {
       boxShadow="sm"
     >
       <Heading as="h3">Where in the world?</Heading>
-      <Box>Theme switcher</Box>
+      <ThemeSwitch />
     </Flex>
   );
 };

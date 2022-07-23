@@ -16,11 +16,11 @@ const Field: React.FC<Props> = ({ placeholder, width, icon }) => {
           <SearchIcon color="gray.500" />
         </InputLeftElement>
       )}
-
       <Input
         onChange={(e) => console.log(e.target.value)}
         type="text"
         placeholder={placeholder}
+        _placeholder={{ color: 'gray.500' }}
         w={width}
         boxShadow="sm"
       />
