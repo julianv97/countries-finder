@@ -8,7 +8,7 @@ interface Props {
 
 const ListItem: React.FC<Props> = ({ title, text }) => {
   return (
-    <Flex my={1} alignItems="center">
+    <Flex alignItems="center">
       <Text fontWeight="semibold" as="h4" size="xs" mr={1}>
         {title}:
       </Text>

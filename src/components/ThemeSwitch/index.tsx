@@ -10,6 +10,7 @@ const ThemeSwitch = () => {
       text={colorMode === 'light' ? 'Dark' : 'Light'}
       icon={<Icon />}
       onClick={toggleColorMode}
+      height="10"
     />
   );
 };

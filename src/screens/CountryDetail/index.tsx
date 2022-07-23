@@ -1,84 +1,105 @@
 import React from 'react';
-import { Box, Flex, HStack, Image, Heading } from '@chakra-ui/react';
+import { Box, Flex, Image, Heading, Grid } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import { useLocation } from 'wouter';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getCountry } from '../../api';
 import Button from '../../components/Button';
-import { DetailsParamsType } from '../../schemas';
 import { darkBlue, white } from '../../theme/colors';
 import ListItem from '../../components/ListItem';
 
-const CountryDetail = ({ params }: DetailsParamsType) => {
+const CountryDetail = () => {
+  const { alpha3Code } = useParams();
+  const navigate = useNavigate();
   const {
     data: country,
     isFetching,
     isError,
-  } = useQuery(['country'], () => getCountry({ alpha3Code: params.alpha3Code }));
-  const location = useLocation();
+  } = useQuery(['country'], () => getCountry({ alpha3Code } as { alpha3Code: string }));
 
   if (isError) return <div>Error!</div>;
 
   if (isFetching) return <div>Loading...</div>;
 
+  const LIST_ITEMS = [
+    { title: 'Native Name', text: country?.population.toLocaleString() },
+    { title: 'Capital', text: country?.capital },
+    { title: 'Population', text: country?.population.toLocaleString() },
+    { title: 'Top Level Domain', text: country?.topLevelDomain },
+    { title: 'Region', text: country?.region },
+    {
+      title: 'Currencies',
+      text: country?.currencies.map((currency) => currency.name).join(', '),
+    },
+    { title: 'Sub Region', text: country?.subregion },
+    {
+      title: 'Languages',
+      text: country?.languages.map((language) => language.name).join(', '),
+    },
+  ];
+
   return (
-    <Flex direction="column" w="100%" mt={10}>
+    <Flex direction="column" w="100%" mx={10} my={10}>
       <Box mb={10}>
         <Button
           text="Back"
           width="32"
+          height="10"
           icon={<ArrowBackIcon />}
           backgroundColor={[white, darkBlue]}
           boxShadow="sm"
-          onClick={() => location[1]('/')}
+          onClick={() => {
+            navigate('/');
+          }}
         />
       </Box>
-      <HStack>
-        <Image src={country?.flags.png} w="2xl" />
-        <Box>
+      <Flex flexDirection={['column', 'column', 'row']}>
+        <Image
+          src={country?.flags.png}
+          w={['100%', '100%', '50%']}
+          h="96"
+          mr={20}
+          fallbackSrc="https://via.placeholder.com/150"
+        />
+        <Box mt={10} w="100%">
           <Heading>{country?.name}</Heading>
-          {[
-            { title: 'Native Name', text: country?.population.toLocaleString() },
-            { title: 'Population', text: country?.population.toLocaleString() },
-            { title: 'Region', text: country?.region },
-            { title: 'Sub Region', text: country?.subregion },
-            { title: 'Capital', text: country?.capital },
-            { title: 'Top Level Domain', text: country?.topLevelDomain },
-            {
-              title: 'Currencies',
-              text: country?.currencies.map((currency) => currency.name).join(', '),
-            },
-            {
-              title: 'Languages',
-              text: country?.languages.map((language) => language.name).join(', '),
-            },
-          ].map((item) => (
-            <ListItem key={item.title} title={item.title} text={item.text as string} />
-          ))}
-
+          <Grid
+            templateColumns={[
+              'repeat(1, 1fr)',
+              'repeat(1, 1fr)',
+              'repeat(1, 1fr)',
+              'repeat(2, 1fr)',
+            ]}
+            gap={4}
+          >
+            {LIST_ITEMS.map((item) => (
+              <ListItem key={item.title} title={item.title} text={item.text as string} />
+            ))}
+          </Grid>
           <Flex alignItems="center" mt={10}>
-            <Heading size="md" mr={4}>
+            <Heading size="sm" mr={4}>
               Border Countries:
             </Heading>
-            <Box>
+            <Flex flexWrap="wrap" gap={2}>
               {country?.borders?.map((border) => (
                 <Button
                   key={border}
                   text={border}
-                  width="32"
+                  width="14"
+                  height="8"
                   backgroundColor={[white, darkBlue]}
                   boxShadow="sm"
                   onClick={() => {
-                    location[1](`/details/${border}`);
+                    navigate(`/details/${border}`);
                     window.location.reload();
                   }}
                 />
               ))}
               {!country?.borders && <p>No borders</p>}
-            </Box>
+            </Flex>
           </Flex>
         </Box>
-      </HStack>
+      </Flex>
     </Flex>
   );
 };

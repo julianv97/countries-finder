@@ -7,6 +7,7 @@ interface Props {
   onClick?: () => void;
   backgroundColor?: string[];
   width?: string;
+  height?: string;
   boxShadow?: string;
 }
 
@@ -16,6 +17,7 @@ const Button: React.FC<Props> = ({
   onClick,
   backgroundColor = ['inherit', 'inherit'],
   width = 28,
+  height = 'auto',
   boxShadow = 'none',
 }) => {
   return (
@@ -23,6 +25,7 @@ const Button: React.FC<Props> = ({
       onClick={onClick}
       leftIcon={icon}
       w={width}
+      h={height}
       bg={backgroundColor[0]}
       boxShadow={boxShadow}
       _dark={{

@@ -13,8 +13,6 @@ const Home = () => {
   const { data: countries, isLoading, isError } = useQuery(['countries'], getCountries);
   const { handleFilter, filteredItems } = useFilter(countries as CountryType[]);
 
-  console.log(countries);
-
   if (isLoading) return <div>Loading...</div>;
 
   if (isError) return <div>Error!</div>;
