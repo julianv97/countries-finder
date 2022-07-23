@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/react';
+import { Flex, Stack } from '@chakra-ui/react';
 import React from 'react';
 import { veryLightGray } from '../../theme/colors';
 import Header from '../Header';
@@ -9,9 +9,11 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <Stack h="100%" minH="100vh" bg={veryLightGray}>
+    <Stack w="100%" h="100%" minH="100vh" bg={veryLightGray}>
       <Header />
-      <Box h="100%">{children}</Box>
+      <Flex w="100%" justifyContent="center">
+        {children}
+      </Flex>
     </Stack>
   );
 };
