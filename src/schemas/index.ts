@@ -1,10 +1,7 @@
 import { z } from 'zod';
 
 export const CountrySchema = z.object({
-  name: z.object({
-    common: z.string(),
-    official: z.string(),
-  }),
+  name: z.string(),
   capital: z.string(),
   region: z.string(),
   subregion: z.string(),
@@ -26,12 +23,12 @@ export const CountrySchema = z.object({
     png: z.string(),
   }),
   topLevelDomain: z.array(z.string()),
-  ccn3: z.string(),
+  alpha3Code: z.string(),
 });
 
 export const DetailsParamsSchema = z.object({
   params: z.object({
-    code: z.string(),
+    alpha3Code: z.string(),
   }),
 });
 

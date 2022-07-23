@@ -11,9 +11,9 @@ interface Props {
 }
 
 const CountryCard: React.FC<Props> = ({ country }) => {
-  const { flags, name, population, region, capital, ccn3 } = country;
+  const { flags, name, population, region, capital, alpha3Code } = country;
   return (
-    <Link to={`/details/${ccn3}`}>
+    <Link href={`/details/${alpha3Code}`}>
       <Box
         w={['80', '80', '72']}
         boxShadow="base"
@@ -22,17 +22,10 @@ const CountryCard: React.FC<Props> = ({ country }) => {
         _dark={{ bg: darkBlue }}
         cursor="pointer"
       >
-        <Image
-          src={flags.png}
-          alt={name?.common}
-          h="40"
-          w="100%"
-          borderTopRadius="md"
-          boxShadow="sm"
-        />
+        <Image src={flags.png} alt={name} h="40" w="100%" borderTopRadius="md" boxShadow="sm" />
         <Box p={5}>
           <Heading as="h4" size="md" mb={3}>
-            {name?.common}
+            {name}
           </Heading>
           {[
             { title: 'Population', text: population.toLocaleString() },

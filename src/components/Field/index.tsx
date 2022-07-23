@@ -8,7 +8,7 @@ interface Props {
   width?: string | number;
   icon?: boolean;
   // eslint-disable-next-line no-unused-vars
-  onChange: (value: any, filterBy: string) => void;
+  onChange: (value: string, filterBy: string) => void;
 }
 
 const Field: React.FC<Props> = ({ placeholder, width, icon, onChange }) => {
