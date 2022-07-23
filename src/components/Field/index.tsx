@@ -7,9 +7,11 @@ interface Props {
   placeholder: string;
   width?: string | number;
   icon?: boolean;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (e: any) => void;
 }
 
-const Field: React.FC<Props> = ({ placeholder, width, icon }) => {
+const Field: React.FC<Props> = ({ placeholder, width, icon, onChange }) => {
   return (
     <InputGroup>
       {icon && (
@@ -18,7 +20,7 @@ const Field: React.FC<Props> = ({ placeholder, width, icon }) => {
         </InputLeftElement>
       )}
       <Input
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         type="text"
         placeholder={placeholder}
         _placeholder={{ color: 'gray.500' }}

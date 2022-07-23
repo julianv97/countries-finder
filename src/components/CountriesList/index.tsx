@@ -18,7 +18,7 @@ const CountriesList: React.FC<Props> = ({ countries = [] }) => {
       mt="10"
     >
       {countries.map((country: CountryType) => (
-        <CountryCard country={country} />
+        <CountryCard key={country.name.common} country={country} />
       ))}
     </Flex>
   );
