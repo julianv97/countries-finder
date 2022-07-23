@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { white } from '../../theme/colors';
 
 interface Props {
   placeholder: string;
@@ -21,6 +22,11 @@ const Field: React.FC<Props> = ({ placeholder, width, icon }) => {
         type="text"
         placeholder={placeholder}
         _placeholder={{ color: 'gray.500' }}
+        _dark={{
+          _placeholder: {
+            color: white,
+          },
+        }}
         w={width}
         boxShadow="sm"
       />
