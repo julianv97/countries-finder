@@ -21,15 +21,19 @@ const CountryDetail = () => {
 
   if (isFetching) return <Spinner size="xl" mt={20} />;
 
+  console.log(country);
+
   const LIST_ITEMS = [
     { title: 'Native Name', text: country?.population.toLocaleString() },
-    { title: 'Capital', text: country?.capital },
+    { title: 'Capital', text: country?.capital || 'N/A' },
     { title: 'Population', text: country?.population.toLocaleString() },
     { title: 'Top Level Domain', text: country?.topLevelDomain },
     { title: 'Region', text: country?.region },
     {
       title: 'Currencies',
-      text: country?.currencies.map((currency) => currency.name).join(', '),
+      text: country?.currencies
+        ? country?.currencies.map((currency) => currency.name).join(', ')
+        : 'N/A',
     },
     { title: 'Sub Region', text: country?.subregion },
     {
