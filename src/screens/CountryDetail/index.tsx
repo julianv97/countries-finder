@@ -24,7 +24,7 @@ const CountryDetail = () => {
   console.log(country);
 
   const LIST_ITEMS = [
-    { title: 'Native Name', text: country?.population.toLocaleString() },
+    { title: 'Native Name', text: country?.name },
     { title: 'Capital', text: country?.capital || 'N/A' },
     { title: 'Population', text: country?.population.toLocaleString() },
     { title: 'Top Level Domain', text: country?.topLevelDomain },
