@@ -21,8 +21,6 @@ const CountryDetail = () => {
 
   if (isFetching) return <Spinner size="xl" mt={20} />;
 
-  console.log(country);
-
   const LIST_ITEMS = [
     { title: 'Native Name', text: country?.name },
     { title: 'Capital', text: country?.capital || 'N/A' },
